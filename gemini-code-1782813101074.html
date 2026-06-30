@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Viết Lại Câu Tương Tác (Câu 51-100) - Ms Lê Hằng English</title>
+    <!-- Nhúng Google Fonts hỗ trợ hiển thị tròn trịa, thân thiện chuẩn Duolingo -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ĐỊNH NGHĨA BIẾN VÀ HỆ MÀU PASTEL + NEON GAMIFICATION --- */
+        :root {
+            --bg-gradient: linear-gradient(-45deg, #8854C0, #FECA57, #00C9A7, #FF7675, #48DBFB);
+            --correct-color: #00D26A;
+            --correct-shadow: #00A854;
+            --wrong-color: #FF4757;
+            --wrong-shadow: #D63031;
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --text-main: #2d3436;
+        }
+
+        /* --- CẤU HÌNH NỀN LOANG CHUYỂN ĐỘNG (ANIMATED GRADIENT) --- */
+        * {
+            box-sizing: border-box;
+            font-family: 'Nunito', 'Quicksand', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 10px 10px 40px 10px;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientMotion 16s ease infinite;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientMotion {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- LỚP LAYER HỌA TIẾT SVG TRÔI NỔI ĐỘC LẬP --- */
+        #bg-pattern-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            fill: rgba(255, 255, 255, 0.15);
+            animation: floatDrift 25s linear infinite alternate;
+        }
+
+        @keyframes floatDrift {
+            0% { transform: translate(0, 0) rotate(0deg) scale(0.8); }
+            100% { transform: translate(120px, 80px) rotate(360deg) scale(1.2); }
+        }
+
+        /* --- KHUNG GIAO DIỆN CHÍNH --- */
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 780px;
+        }
+
+        /* --- TIÊU ĐỀ BÀI HỌC VÀ KHUNG THÔNG BÁO QUAN TRỌNG --- */
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 0px rgba(0,0,0,0.06);
+        }
+
+        header h5 {
+            margin: 0;
+            font-size: 1rem;
+            color: #6c5ce7;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border: 3px dashed #ffc107;
+            border-radius: 16px;
+            padding: 15px;
+            margin: 15px 0 25px 0;
+            box-shadow: 0 8px 0px #ffeaa7;
+            text-align: center;
+        }
+
+        .alert-title {
+            font-weight: 900;
+            color: #d63031;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .alert-text {
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #2d3436;
+        }
+
+        .scroll-reminder {
+            display: inline-block;
+            margin-top: 8px;
+            font-style: italic;
+            color: #e84393;
+            font-weight: 900;
+        }
+
+        /* --- THIẾT KẾ CARD CÂU HỎI 3D --- */
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 0px rgba(0, 0, 0, 0.08), 0 20px 25px rgba(0,0,0,0.05);
+            border: 3px solid #dfe6e9;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .shake-animation {
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .q-header {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #2c3e50;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .q-subtext {
+            display: block;
+            margin-top: 8px;
+            color: #6c5ce7;
+            font-weight: 900;
+        }
+
+        /* --- HỆ THỐNG ĐÁP ÁN TRẮC NGHIỆM --- */
+        .choices-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .choice-btn {
+            background: #ffffff;
+            border: 3px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 6px 0px #e2e8f0;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .choice-btn:hover:not(:disabled) {
+            transform: scale(1.01) translateY(-2px);
+            box-shadow: 0 8px 0px #cbd5e1;
+            border-color: #cbd5e1;
+        }
+
+        .choice-btn:active:not(:disabled) {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0px #cbd5e1;
+        }
+
+        .choice-btn.correct-ans {
+            background-color: var(--correct-color) !important;
+            color: white !important;
+            border-color: var(--correct-shadow) !important;
+            box-shadow: 0 4px 0px var(--correct-shadow) !important;
+        }
+
+        .choice-btn.wrong-ans {
+            background-color: var(--wrong-color) !important;
+            color: white !important;
+            border-color: var(--wrong-shadow) !important;
+            box-shadow: 0 4px 0px var(--wrong-shadow) !important;
+        }
+
+        .choice-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        /* --- KHUNG GIẢI THÍCH SIÊU CHI TIẾT --- */
+        .explanation-container {
+            display: none;
+            margin-top: 18px;
+            background: #f8f9fa;
+            border-left: 6px solid #6c5ce7;
+            border-radius: 0 14px 14px 0;
+            padding: 16px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-heading {
+            font-weight: 900;
+            color: #6c5ce7;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-step {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .exp-step-title {
+            font-weight: 900;
+            color: #2d3436;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* --- NÚT NỘP BÀI TỔNG KẾT --- */
+        .submit-btn-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 50px 0;
+        }
+
+        .submit-final-btn {
+            background: linear-gradient(135deg, #ff7675, #6c5ce7);
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: 900;
+            padding: 16px 50px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 8px 0px #4a3cb3;
+            transition: all 0.1s;
+        }
+
+        .submit-final-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 11px 0px #4a3cb3;
+        }
+
+        .submit-final-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0px #4a3cb3;
+        }
+
+        /* --- POPUP HIỂN THỊ KẾT QUẢ TỔNG HỢP --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.6);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 28px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 4px solid #6c5ce7;
+            animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-score {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #6c5ce7;
+            margin: 15px 0;
+        }
+
+        .modal-comment {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #2d3436;
+            margin-bottom: 25px;
+        }
+
+        .close-modal-btn {
+            background: #00D26A;
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 900;
+            padding: 12px 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #00A854;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 150;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="confetti-canvas"></canvas>
+    <div id="bg-pattern-layer"></div>
+
+    <div class="wrapper">
+        <header>
+            <h5>Giáo viên tạo: Ms Lê Hằng English</h5>
+        </header>
+
+        <div class="alert-box">
+            <span class="alert-title">⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</span>
+            <span class="alert-text">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+            </span>
+            <br>
+            <span class="scroll-reminder">* Kéo tới đâu, làm tới đó! *</span>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-btn-wrap">
+            <button class="submit-final-btn" onclick="submitExam()">Nộp Bài Tổng Kết</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-card">
+            <h2 style="margin:0; font-weight:900; color:#2d3436;">🎉 KẾT QUẢ CỦA CON 🎉</h2>
+            <div class="modal-score" id="score-text">0/0</div>
+            <div class="modal-comment" id="comment-text">Lời nhận xét...</div>
+            <button class="close-modal-btn" onclick="closeModal()">Làm lại bài thi</button>
+        </div>
+    </div>
+
+    <script>
+        /* --- KHỞI TẠO ÂM THANH QUA WEB AUDIO API --- */
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playAudioFeedback(type) {
+            if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            if (type === 'correct') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); 
+                gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                osc.start();
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.12); 
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                osc.stop(audioCtx.currentTime + 0.4);
+            } else {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                osc.start();
+                osc.frequency.linearRampToValueAtTime(90, audioCtx.currentTime + 0.25);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                osc.stop(audioCtx.currentTime + 0.35);
+            }
+        }
+
+        /* --- THUẬT TOÁN SINH PHÁO GIẤY CONFETTI --- */
+        let confettiAnimationId;
+        function triggerConfettiEffect() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let particles = [];
+            const colors = ['#FF9FF3', '#FECA57', '#FF6B6B', '#48DBFB', '#1DD1A1', '#6c5ce7'];
+
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 5,
+                    d: Math.random() * canvas.height,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    tilt: Math.random() * 10 - 5,
+                    tiltAngleIncremental: Math.random() * 0.05 + 0.02,
+                    tiltAngle: 0
+                });
+            }
+
+            function drawConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let remaining = false;
+                particles.forEach((p) => {
+                    p.tiltAngle += p.tiltAngleIncremental;
+                    p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+                    p.x += Math.sin(p.tiltAngle);
+                    p.tilt = Math.sin(p.tiltAngle) * 12;
+                    if (p.y < canvas.height) { remaining = true; }
+                    ctx.beginPath();
+                    ctx.lineWidth = p.r;
+                    ctx.strokeStyle = p.color;
+                    ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+                    ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+                    ctx.stroke();
+                });
+                if (remaining) { confettiAnimationId = requestAnimationFrame(drawConfetti); }
+                else { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+            }
+            cancelAnimationFrame(confettiAnimationId);
+            drawConfetti();
+        }
+
+        /* --- TỰ ĐỘNG SINH HỌA TIẾT SVG TRÊN NỀN --- */
+        function initBackgroundPatterns() {
+            const bgLayer = document.getElementById('bg-pattern-layer');
+            const paths = [
+                "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
+                "M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4M6,14A2,2 0 0,1 4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14M12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20M18,14A2,2 0 0,1 16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14Z"
+            ];
+            for(let i=0; i < 20; i++) {
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.setAttribute("viewBox", "0 0 24 24");
+                svg.setAttribute("class", "floating-shape");
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", paths[Math.floor(Math.random() * paths.length)]);
+                svg.appendChild(path);
+                svg.style.width = Math.random() * 25 + 20 + "px";
+                svg.style.height = svg.style.width;
+                svg.style.left = Math.random() * 100 + "vw";
+                svg.style.top = Math.random() * 100 + "vh";
+                svg.style.animationDelay = Math.random() * -20 + "s";
+                svg.style.animationDuration = Math.random() * 15 + 15 + "s";
+                bgLayer.appendChild(svg);
+            }
+        }
+
+        /* --- DỮ LIỆU ĐỀ BÀI 100% TOÀN VẸN CÙNG GIẢI THÍCH 4 BƯỚC SIÊU CHI TIẾT --- */
+        const quizDataRaw = [
+            {
+                id: 51,
+                original: "51. I didn't arrived in time to see him.",
+                prompt: "→ I wasn't early",
+                choices: ["enough to see him.", "enough seeing him.", "to see him enough.", "for see him."],
+                correct: "enough to see him.",
+                explanation: {
+                    step1: "A. enough to see him: Cấu trúc đủ để làm gì.<br>B. enough seeing him: Sai dạng động từ V-ing.<br>C. to see him enough: Sai vị trí của 'enough'.<br>D. for see him: Sai giới từ và dạng động từ.",
+                    step2: "Tôi đã không đến kịp giờ để gặp anh ấy. -> Tôi đã không đủ sớm để gặp anh ấy.",
+                    step3: "Áp dụng cấu trúc: <strong>S + be + adj + enough + to-V</strong>. Trái nghĩa của 'not in time' là 'not early enough'.",
+                    step4: "Các phương án B, C, D đều chia sai vị trí của từ chỉ mức độ 'enough' hoặc dùng sai hình thái động từ nguyên mẫu có 'to'."
+                }
+            },
+            {
+                id: 52,
+                original: "52. I'm sorry I was rude to you yesterday.",
+                prompt: "→ I apologize",
+                choices: ["for being rude to you yesterday.", "to be rude to you yesterday.", "for rude to you yesterday.", "that being rude to you yesterday."],
+                correct: "for being rude to you yesterday.",
+                explanation: {
+                    step1: "A. for being rude...: Đúng cấu trúc danh động từ sau giới từ.<br>B. to be rude...: Dùng sai cấu trúc động từ.<br>C. for rude...: Thiếu động từ tobe ở dạng V-ing.<br>D. that being rude...: Sai liên từ mệnh đề.",
+                    step2: "Tôi xin lỗi vì đã thô lỗ với bạn ngày hôm qua. -> Tôi xin lỗi vì đã thô lỗ với bạn ngày hôm qua.",
+                    step3: "Áp dụng cấu trúc xin lỗi: <strong>Apologize to somebody for + V-ing/Noun</strong>. Vì sau giới từ 'for' cần một danh động từ nên ta dùng 'being rude'.",
+                    step4: "B, C, D vi phạm quy tắc kết hợp giới từ và cấu trúc từ loại bắt buộc đứng sau động từ 'apologize'."
+                }
+            },
+            {
+                id: 53,
+                original: "53. She didn't hurry, so she missed the train.",
+                prompt: "→ If",
+                choices: ["she had hurried, she wouldn't have missed the train.", "she hurried, she wouldn't miss the train.", "she had hurried, she would miss the train.", "she didn't hurry, she would catch the train."],
+                correct: "she had hurried, she wouldn't have missed the train.",
+                explanation: {
+                    step1: "A. she had hurried...: Câu điều kiện loại 3 diễn tả giả định trái ngược quá khứ.<br>B. loại 2 (Sai thời gian).<br>C. loại 3 khẳng định (Sai ngữ nghĩa).<br>D. sai cấu trúc ngữ pháp điều kiện.",
+                    step2: "Cô ấy đã không khẩn trương, vì vậy cô ấy đã lỡ chuyến tàu. -> Nếu cô ấy khẩn trương, cô ấy đã không lỡ chuyến tàu.",
+                    step3: "Sự việc diễn ra hoàn toàn trong quá khứ ('didn't hurry', 'missed') nên phải dùng câu điều kiện loại 3: <strong>If + S + had + V3/ed, S + would/could + have + V3/ed</strong>.",
+                    step4: "B sai loại điều kiện. C và D viết sai lệch hoàn toàn tính logic và ý nghĩa hệ quả của hành động thực tế."
+                }
+            },
+            {
+                id: 54,
+                original: "54. Barbara is the best tennis-player in the club.",
+                prompt: "→ No one",
+                choices: ["in the club is a better tennis player than Barbara.", "in the club is as good tennis player as Barbara.", "play tennis better than Barbara in the club.", "in the club is the better tennis player than Barbara."],
+                correct: "in the club is a better tennis player than Barbara.",
+                explanation: {
+                    step1: "A. is a better... than: Cấu trúc so sánh hơn tuyệt đối với danh từ chỉ người.<br>B. thiếu mạo từ trong cấu trúc so sánh bằng.<br>C. sai hòa hợp động từ chia số ít.<br>D. thừa mạo từ 'the' trong cấu trúc so sánh hơn.",
+                    step2: "Barbara là vận động viên quần vợt giỏi nhất câu lạc bộ. -> Không ai trong câu lạc bộ là vận động viên quần vợt giỏi hơn Barbara.",
+                    step3: "Chuyển từ so sánh nhất sang so sánh hơn mang nghĩa tuyệt đối: <strong>S (chủ ngữ số ít phủ định) + be + a/an + adj-hơn + N + than + đối tượng</strong>.",
+                    step4: "Các câu B, C, D đều vi phạm lỗi cấu trúc danh từ đếm được số ít hoặc chia sai hình thái của tính từ so sánh."
+                }
+            },
+            {
+                id: 55,
+                original: "55. I haven't seen that man here before.",
+                prompt: "→ It's",
+                choices: ["the first time I have seen that man here.", "the first time I saw that man here.", "before I have seen that man here.", "a long time since I saw that man here."],
+                correct: "the first time I have seen that man here.",
+                explanation: {
+                    step1: "A. the first time I have seen...: Hiện tại hoàn thành chuẩn xác.<br>B. dùng thì quá khứ đơn (Sai quy tắc).<br>C. lặp từ 'before' sai cấu trúc.<br>D. làm thay đổi hoàn toàn ý nghĩa mốc thời gian câu.",
+                    step2: "Tôi chưa từng gặp người đàn ông đó ở đây trước đây. -> Đây là lần đầu tiên tôi gặp người đàn ông đó ở đây.",
+                    step3: "Cấu trúc chuyển đổi kinh điển giữa thể phủ định và số lần: <strong>S + have/has + not + V3/ed + before = It's the first time + S + have/has + V3/ed</strong>.",
+                    step4: "B chia sai thì động từ quy định. C và D sai lệch hoàn toàn cấu trúc ngữ pháp và ngữ nghĩa gốc ban đầu."
+                }
+            },
+            {
+                id: 56,
+                original: "56. The furniture was so expensive that I didn't buy it.",
+                prompt: "→ The furniture was too",
+                choices: ["expensive for me to buy.", "expensive for me to buy it.", "expensive that I didn't buy.", "expensive to buy it."],
+                correct: "expensive for me to buy.",
+                explanation: {
+                    step1: "A. expensive for me to buy: Cấu trúc chuẩn bỏ tân ngữ lặp lại.<br>B. thừa tân ngữ 'it'.<br>C. dùng sai cấu trúc liên từ 'too... that'.<br>D. thiếu thành phần chỉ đối tượng tác động 'for me'.",
+                    step2: "Món đồ nội thất quá đắt đến nỗi tôi không mua nó. -> Món đồ nội thất quá đắt để tôi có thể mua.",
+                    step3: "Cấu trúc biến đổi: <strong>S + be + so + adj + that + S + didn't + V + O = S + be + too + adj + (for O) + to-V</strong>. Lưu ý phải lược bỏ tân ngữ 'it' ở cuối vì nó trùng với chủ ngữ chính.",
+                    step4: "B lỗi thừa tân ngữ. C và D áp dụng sai hoàn toàn công thức cấu tạo của cấu trúc quá mức không thể 'too... to'."
+                }
+            },
+            {
+                id: 57,
+                original: "57. The robbers made the bank manager hand over on the money.",
+                prompt: "→ The bank manager",
+                choices: ["was made to hand over on the money.", "was made hand over on the money.", "made to hand over on the money.", "were made to hand over on the money."],
+                correct: "was made to hand over on the money.",
+                explanation: {
+                    step1: "A. was made to hand over...: Cấu trúc bị động chuẩn ngôi số ít.<br>B. thiếu giới từ 'to'.<br>C. thiếu động từ tobe bị động.<br>D. chia sai động từ số nhiều 'were'.",
+                    step2: "Những kẻ cướp đã bắt quản lý ngân hàng giao tiền ra. -> Quản lý ngân hàng đã bị bắt buộc phải giao tiền ra.",
+                    step3: "Cấu trúc bị động của động từ sai khiến 'make': <strong>S + make + O + V-bare = O + be + made + to-V</strong>. Chủ ngữ số ít 'The bank manager' đi với 'was made to'."
+                }
+            },
+            {
+                id: 58,
+                original: "58. Tom learned to drive when he was nineteen.",
+                prompt: "→ Tom has",
+                choices: ["known how to drive since he was nineteen.", "learned to drive since he was nineteen.", "driven when he was nineteen.", "been learning to drive when he was nineteen."],
+                correct: "known how to drive since he was nineteen.",
+                explanation: {
+                    step1: "A. known how to drive...: Diễn đạt khả năng kéo dài từ quá khứ.<br>B. hành động học kết thúc rồi nên không dùng hiện tại hoàn thành nghĩa này.<br>C, D sai liên từ mốc thời gian hoàn thành.",
+                    step2: "Tom đã học lái xe khi anh ấy mười chín tuổi. -> Tom đã biết lái xe kể từ khi anh ấy mười chín tuổi.",
+                    step3: "Chuyển từ sự kiện quá khứ sang trạng thái kéo dài ở hiện tại hoàn thành: <strong>S + learned to-V + when + clause-quá khứ = S + has + known how to-V + since + clause-quá khứ</strong>.",
+                    step4: "B sai bản chất hành động kéo dài. C và D vi phạm quy tắc kết hợp trạng ngữ thời gian của thì hiện tại hoàn thành."
+                }
+            },
+            {
+                id: 59,
+                original: "59. She had never been so unhappy before.",
+                prompt: "→ She was unhappier",
+                choices: ["than she had ever been before.", "as she had never been before.", "more than she ever was before.", "than never before."],
+                correct: "than she had ever been before.",
+                explanation: {
+                    step1: "A. than she had ever been...: Câu so sánh hơn mang nghĩa tuyệt đối chính xác.<br>B. dùng sai từ nối 'as'.<br>C. dùng sai cấu trúc trùng lặp 'more'.<br>D. cụm rút gọn sai ngữ pháp.",
+                    step2: "Trước đây cô ấy chưa từng bất hạnh như vậy. -> Cô ấy đã bất hạnh hơn bất kỳ lúc nào trước đây.",
+                    step3: "Biến đổi tương đương giữa câu phủ định tuyệt đối quá khứ hoàn thành và so sánh hơn: <strong>S + had + never + been + so + adj + before = S + was + adj-hơn + than + S + had + ever + been + before</strong>.",
+                    step4: "Các phương án B, C, D đều viết sai cấu trúc so sánh hơn hoặc sai dạng thức của trạng từ tần suất giả định."
+                }
+            },
+            {
+                id: 60,
+                original: "60. It was so late that nothing could be done.",
+                prompt: "→ It was too",
+                choices: ["late for anything to be done.", "late that nothing could be done.", "late to do nothing.", "late for nothing could be done."],
+                correct: "late for anything to be done.",
+                explanation: {
+                    step1: "A. late for anything to be done: Cấu trúc bị động với đại từ khẳng định chính xác.<br>B. sai cấu trúc liên từ.<br>C. lặp lại nghĩa phủ định tạo thành nghĩa ngược.<br>D. viết sai cú pháp mệnh đề.",
+                    step2: "Trời đã quá muộn đến nỗi không thể làm được gì nữa. -> Trời đã quá muộn để bất cứ điều gì có thể được thực hiện.",
+                    step3: "Cấu trúc hoán đổi: <strong>so + adj + that + nothing + can/could + be + done = too + adj + for anything + to + be + done</strong>. Lưu ý phải đổi chủ ngữ 'nothing' thành 'anything' vì bản thân 'too' mang nghĩa phủ định.",
+                    step4: "B, C, D vi phạm quy tắc phủ định kép hoặc áp dụng sai công thức cấu tạo của cấu trúc quá mức không thể."
+                }
+            },
+            {
+                id: 61,
+                original: "61. He left school and then joined the army.",
+                prompt: "→ After",
+                choices: ["leaving school, he joined the army.", "he left school, he joined the army.", "had left school, he joined the army.", "left school, he joined the army."],
+                correct: "leaving school, he joined the army.",
+                explanation: {
+                    step1: "A. leaving school...: Cấu trúc danh động từ rút gọn chủ ngữ chính xác.<br>B. dùng sai thì động từ của mệnh đề trước (đúng phải là had left).<br>C, D thiếu thành phần chủ ngữ mệnh đề.",
+                    step2: "Anh ấy rời ghế nhà trường và sau đó gia nhập quân đội. -> Sau khi rời ghế nhà trường, anh ấy đã gia nhập quân đội.",
+                    step3: "Khi hai mệnh đề có cùng chủ ngữ 'He', ta có thể rút gọn mệnh đề trạng ngữ chỉ thời gian bắt đầu bằng giới từ: <strong>After + V-ing, S + V-ed</strong>.",
+                    step4: "B sai quy tắc chia phối hợp thì thời gian quá khứ. C và D thiếu thành tố chủ ngữ cấu thành mệnh đề độc lập."
+                }
+            },
+            {
+                id: 62,
+                original: "62. The leak was repaired by the plumber this morning.",
+                prompt: "→ The plumber",
+                choices: ["repaired the leak this morning.", "was repaired the leak this morning.", "has repaired the leak this morning.", "repairs the leak this morning."],
+                correct: "repaired the leak this morning.",
+                explanation: {
+                    step1: "A. repaired...: Câu chủ động quá khứ đơn chuẩn xác.<br>B. chia bị động (Sai nghĩa).<br>C. chia hiện tại hoàn thành.<br>D. chia hiện tại đơn.",
+                    step2: "Vết rò rỉ đã được sửa bởi người thợ sửa ống nước sáng nay. -> Người thợ sửa ống nước đã sửa vết rò rỉ sáng nay.",
+                    step3: "Chuyển câu từ thể bị động sang chủ động ở thì Quá khứ Đơn dựa vào trạng ngữ 'this morning': <strong>S + V-ed + O</strong>.",
+                    step4: "Các phương án B, C, D đều chia sai thể chủ động hoặc sai lệch dòng thời gian quá khứ xác định của hành động câu gốc."
+                }
+            },
+            {
+                id: 63,
+                original: "63. This flower is very beautiful! ",
+                prompt: "→ How",
+                choices: ["beautiful this flower is!", "beautiful is this flower!", "a beautiful flower this is!", "beautiful flower it is!"],
+                correct: "beautiful this flower is!",
+                explanation: {
+                    step1: "A. beautiful this flower is!: Cấu trúc cảm thán chuẩn chỉnh.<br>B. đảo động từ thành câu hỏi (Sai).<br>C, D viết sai cấu trúc cảm thán của cụm từ.",
+                    step2: "Bông hoa này thật là đẹp! -> Bông hoa này mới đẹp làm sao!",
+                    step3: "Áp dụng công thức câu cảm thán bắt đầu bằng cụm từ chỉ mức độ: <strong>How + adj + S + be!</strong>. Do đó tính từ 'beautiful' đứng ngay sau 'How'.",
+                    step4: "Các phương án B, C, D vi phạm trật tự sắp xếp từ loại hoặc nhầm lẫn sang công thức cảm thán đi với từ 'What'."
+                }
+            },
+            {
+                id: 64,
+                original: "64. Somebody stole his watch yesterday.",
+                prompt: "→ His watch",
+                choices: ["was stolen yesterday.", "stole yesterday.", "had stolen yesterday.", "is stolen yesterday."],
+                correct: "was stolen yesterday.",
+                explanation: {
+                    step1: "A. was stolen...: Câu bị động thì quá khứ đơn chính xác.<br>B. thể chủ động (Sai nghĩa).<br>C. thì quá khứ hoàn thành.<br>D. thì hiện tại đơn.",
+                    step2: "Ai đó đã lấy trộm đồng hồ của anh ấy ngày hôm qua. -> Đồng hồ của anh ấy đã bị lấy trộm ngày hôm qua.",
+                    step3: "Chuyển đổi sang câu bị động thì Quá khứ Đơn do có mốc thời gian 'yesterday': <strong>S (vật số ít) + was + V3/ed</strong>.",
+                    step4: "B sai thể bản chất hành động vật. C và D sai lệch hoàn toàn hệ thống thì động từ của bối cảnh lịch sử câu."
+                }
+            },
+            {
+                id: 65,
+                original: "65. The last time she had a swim was five years ago.",
+                prompt: "→ She hasn't",
+                choices: ["had a swim for five years.", "had a swim since five years ago.", "swum since five years.", "have a swim for five years."],
+                correct: "had a swim for five years.",
+                explanation: {
+                    step1: "A. had a swim for...: Hiện tại hoàn thành đi với khoảng thời gian đúng cấu trúc.<br>B. kết hợp sai cụm từ mốc thời gian.<br>C. dùng sai giới từ 'since'.<br>D. chưa chia động từ phân từ hai.",
+                    step2: "Lần cuối cùng cô ấy đi bơi là cách đây 5 năm. -> Cô ấy đã không đi bơi suốt 5 năm nay rồi.",
+                    step3: "Chuyển đổi cấu trúc thời gian kinh điển: <strong>The last time + S + V-ed + was + khoảng thời gian + ago = S + have/has + not + V3/ed + for + khoảng thời gian</strong>.",
+                    step4: "Các câu B, C, D đều vi phạm lỗi phối hợp giới từ chỉ mốc/khoảng thời gian hoặc chia sai hình thái động từ phân từ hai."
+                }
+            },
+            {
+                id: 66,
+                original: "66. I asked the hotel porter to wake me at 8 o'clock the following morning.",
+                prompt: "→ \"Please",
+                choices: ["wake me at 8 o'clock tomorrow morning.\"", "wake me at 8 o'clock the following morning.\"", "to wake me at 8 o'clock tomorrow morning.\"", "you wake me at 8 o'clock tomorrow morning.\""],
+                correct: "wake me at 8 o'clock tomorrow morning.\"",
+                explanation: {
+                    step1: "A. wake me...: Câu mệnh lệnh trực tiếp đổi trạng từ chuẩn xác.<br>B. giữ nguyên trạng từ câu gián tiếp (Sai).<br>C. thừa từ 'to'.<br>D. thừa đại từ chủ ngữ câu mệnh lệnh.",
+                    step2: "Tôi đã bảo nhân viên khách sạn đánh thức tôi dậy lúc 8 giờ sáng hôm sau. -> \"Vui lòng đánh thức tôi dậy lúc 8 giờ sáng mai nhé.\"",
+                    step3: "Chuyển từ câu gián tiếp sang câu trực tiếp cầu khiến lịch sự: <strong>Please + V-bare</strong>. Cụm từ chỉ thời gian gián tiếp 'the following morning' phải hoàn trả lại thành trực tiếp 'tomorrow morning'.",
+                    step4: "B, C, D đều vi phạm quy tắc hoán đổi trạng ngữ thời gian hoặc viết sai cấu trúc câu mệnh lệnh cầu khiến trực tiếp."
+                }
+            },
+            {
+                id: 67,
+                original: "67. They'll have to change the date of the meeting again.",
+                prompt: "→ The date",
+                choices: ["of the meeting will have to be changed again.", "of the meeting have to be changed again.", "of the meeting will have to change again.", "of the meeting will be changed again."],
+                correct: "of the meeting will have to be changed again.",
+                explanation: {
+                    step1: "A. of the meeting will have to be changed...: Bị động động từ khuyết thiếu chính xác.<br>B. thiếu trợ động từ tương lai 'will'.<br>C. chia chủ động (Sai nghĩa).<br>D. làm mất cụm động từ gốc 'have to'.",
+                    step2: "Họ sẽ phải thay đổi ngày họp một lần nữa. -> Ngày họp sẽ phải được thay đổi một lần nữa.",
+                    step3: "Chuyển câu sang bị động với cụm động từ khuyết thiếu tương lai: <strong>S + will have to + V-bare + O = O + will have to + be + V3/ed</strong>.",
+                    step4: "Các phương án B, C, D viết thiếu thành phần cấu trúc hoặc làm sai lệch bản chất bị động tác động của sự vật."
+                }
+            },
+            {
+                id: 68,
+                original: "68. The garage is going to repair the car for us next week.",
+                prompt: "→ We are going",
+                choices: ["to have the car repaired next week.", "to repair the car next week.", "to have repaired the car next week.", "to get the garage repair our car next week."],
+                correct: "to have the car repaired next week.",
+                explanation: {
+                    step1: "A. to have the car repaired...: Cấu trúc nhờ vả bị động chuẩn xác.<br>B. tự làm hành động (Sai nghĩa).<br>C. sai trật tự từ loại cấu trúc.<br>D. dùng sai dạng động từ nguyên mẫu sau từ 'get'.",
+                    step2: "Tiệm sửa xe sẽ sửa ô tô cho chúng tôi vào tuần tới. -> Chúng tôi sẽ mang xe đi sửa vào tuần tới.",
+                    step3: "Áp dụng cấu trúc nhờ vả (Causative form) thể bị động: <strong>S + have + something + V3/ed</strong> nhằm diễn tả việc thuê/nhờ ai đó làm gì cho mình.",
+                    step4: "B sai bản chất ngữ nghĩa đối tượng thực hiện. C và D áp dụng sai công thức ngữ pháp của thể sai khiến nhờ vả."
+                }
+            },
+            {
+                id: 69,
+                original: "69. The bus takes longer than the train.",
+                prompt: "→ The train",
+                choices: ["doesn't take as long as the bus.", "takes longer than the bus.", "takes as long as the bus.", "doesn't take longer than the bus."],
+                correct: "doesn't take as long as the bus.",
+                explanation: {
+                    step1: "A. doesn't take as long as...: Cấu trúc so sánh không bằng chính xác.<br>B, C, D đều là các câu viết làm đảo lộn hoặc sai lệch hoàn toàn nghĩa logic đo lường thời gian.",
+                    step2: "Xe buýt đi mất nhiều thời gian hơn tàu hỏa. -> Tàu hỏa không đi mất nhiều thời gian bằng xe buýt.",
+                    step3: "Chuyển từ so sánh hơn sang so sánh không bằng của đối tượng ngược lại: <strong>A + V + ngắn-hơn/dài-hơn + than + B = B + trợ động từ phủ định + V + as + adj/adv gốc + as + A</strong>.",
+                    step4: "Các câu B, C, D vi phạm lỗi logic tư duy toán học ngữ nghĩa, làm câu bị mâu thuẫn trái ngược hoàn toàn thực tế đề bài."
+                }
+            },
+            {
+                id: 70,
+                original: "70. John has not had his hair cut for over six months.",
+                prompt: "→ It is",
+                choices: ["over six months since John last had his hair cut.", "over six months when John had his hair cut.", "over six months since John hasn't had his hair cut.", "for over six months since John had his hair cut."],
+                correct: "over six months since John last had his hair cut.",
+                explanation: {
+                    step1: "A. over six months since...: Cấu trúc mốc thời gian quá khứ khẳng định chuẩn xác.<br>B. dùng sai liên từ 'when'.<br>C. dùng phủ định sau 'since' (Sai logic).<br>D. thừa giới từ 'for' đầu câu.",
+                    step2: "John đã không cắt tóc hơn sáu tháng nay rồi. -> Đã hơn sáu tháng kể từ lần cuối cùng John cắt tóc.",
+                    step3: "Áp dụng công thức cấu trúc thời gian cố định: <strong>S + have/has + not + V3/ed + for + khoảng thời gian = It is + khoảng thời gian + since + S + last + V2/ed</strong>.",
+                    step4: "Các phương án B, C, D dùng sai từ nối hoặc giữ thể phủ định sau liên từ thời gian gây lỗi ngữ pháp nghiêm trọng."
+                }
+            },
+            {
+                id: 71,
+                original: "71. Maria says she'd like to have been put in a higher class.",
+                prompt: "→ Maria wishes",
+                choices: ["she had been put in a higher class.", "she would be put in a higher class.", "she was put in a higher class.", "to be put in a higher class."],
+                correct: "she had been put in a higher class.",
+                explanation: {
+                    step1: "A. she had been put...: Câu ước quá khứ lùi thì chính xác.<br>B. cấu trúc ước tương lai (Sai).<br>C. cấu trúc ước hiện tại.<br>D. sai cấu trúc mệnh đề ước.",
+                    step2: "Maria nói cô ấy muốn được xếp vào một lớp học cao hơn. -> Maria ước cô ấy đã được xếp vào một lớp học cao hơn.",
+                    step3: "Cụm từ gốc diễn tả mong muốn một việc đã qua trong quá khứ 'would like to have been P2' -> Chuyển sang câu ước trái ngược quá khứ dùng Quá khứ Hoàn thành: <strong>S + wish + S + had + V3/ed</strong>.",
+                    step4: "Các câu B, C, D đều chia sai thì của mệnh đề giả định bắt buộc đối với dòng thời gian hồi tưởng quá khứ."
+                }
+            },
+            {
+                id: 72,
+                original: "72. Would you like me to finish the work tonight?",
+                prompt: "→ I'll",
+                choices: ["finish the work tonight if you like.", "like to finish the work tonight.", "finish the work tonight for you like.", "would finish the work tonight."],
+                correct: "finish the work tonight if you like.",
+                explanation: {
+                    step1: "A. finish... if you like: Cấu trúc đưa lời đề nghị trợ giúp chính xác văn phong lịch sự.<br>B, C, D viết lộn xộn từ loại hoặc sai chức năng đưa lời mời.",
+                    step2: "Bạn có muốn tôi hoàn thành công việc tối nay không? -> Tôi sẽ hoàn thành công việc tối nay nếu bạn muốn.",
+                    step3: "Chuyển hoán câu hỏi đề nghị giúp đỡ thành mệnh đề khẳng định mang tính giả định giúp đỡ lịch thiệp: <strong>I will + V-bare + if you like</strong>.",
+                    step4: "Các phương án B, C, D không truyền tải đúng mục đích giao tiếp hoặc vi phạm quy tắc kết hợp trợ động từ."
+                }
+            },
+            {
+                id: 73,
+                original: "73. You may get hungry on the train, so take some sandwiches.",
+                prompt: "→ In",
+                choices: ["case you get hungry on the train, take some sandwiches.", "case you will get hungry on the train, take some sandwiches.", "case of getting hungry on the train, so take some sandwiches.", "order not to get hungry on the train, take some sandwiches."],
+                correct: "case you get hungry on the train, take some sandwiches.",
+                explanation: {
+                    step1: "A. case you get...: Liên từ chỉ sự phòng bị đi với mệnh đề hiện tại đơn chuẩn xác.<br>B. dùng sai trợ động từ 'will'.<br>C. thừa từ nối 'so'.<br>D. làm biến đổi sai nghĩa gốc câu phòng bị.",
+                    step2: "Bạn có thể bị đói trên tàu, vì vậy hãy mang theo vài chiếc bánh mì kẹp. -> Phòng trường hợp bạn bị đói trên tàu, hãy mang theo vài chiếc bánh mì kẹp.",
+                    step3: "Sử dụng liên từ chỉ tình huống phòng bị tai nạn tương lai: <strong>In case + Mệnh đề (Hiện tại đơn), mệnh đề lệnh hành động</strong>.",
+                    step4: "B sai thì sau liên từ phòng bị. C lỗi trùng lặp liên từ kết quả. D sai nghĩa bối cảnh chuẩn chuẩn bị hành lý."
+                }
+            },
+            {
+                id: 74,
+                original: "74. My husband didn't leave the car keys, so I couldn't pick him up at the station.",
+                prompt: "→ If my husband",
+                choices: ["had left the car keys, I could have picked him up at the station.", "left the car keys, I could pick him up at the station.", "hadn't left the car keys, I couldn't pick him up at the station.", "had left the car keys, I would pick him up at the station."],
+                correct: "had left the car keys, I could have picked him up at the station.",
+                explanation: {
+                    step1: "A. had left... could have picked...: Câu điều kiện loại 3 chuẩn xác.<br>B. loại 2 (Sai thời gian thực tế).<br>C. giữ thể phủ định (Sai logic).<br>D. cấu trúc điều kiện hỗn hợp sai bối cảnh.",
+                    step2: "Chồng tôi không để lại chìa khóa xe, vì vậy tôi không thể đón anh ấy ở nhà ga. -> Nếu chồng tôi để lại chìa khóa xe, tôi đã có thể đón anh ấy ở nhà ga.",
+                    step3: "Sự việc hoàn toàn xảy ra trái ngược với thực tế quá khứ đơn, áp dụng công thức điều kiện loại 3: <strong>If + S + had + V3/ed, S + could/would + have + V3/ed</strong>.",
+                    step4: "Các phương án B, C, D đều chia sai loại cấu trúc câu điều kiện hoặc làm đảo lộn tính logic hệ quả hành động."
+                }
+            },
+            {
+                id: 75,
+                original: "75. \"I don't think John will come\", said Bill",
+                prompt: "→ Bill doubted",
+                choices: ["whether John would come.", "that John will come.", "if John comes.", "John to come."],
+                correct: "whether John would come.",
+                explanation: {
+                    step1: "A. whether John would come: Mệnh đề danh ngữ lùi thì chính xác sau từ nghi ngờ.<br>B. chưa lùi động từ khuyết thiếu tương lai.<br>C. chia thì hiện tại đơn (Sai).<br>D. sai cấu trúc động từ.",
+                    step2: "\"Tôi không nghĩ John sẽ đến đâu\", Bill nói. -> Bill nghi ngờ liệu John có đến hay không.",
+                    step3: "Động từ 'doubt' (nghi ngờ) yêu cầu mệnh đề nghi vấn gián tiếp đi kèm liên từ 'whether/if'. Đồng thời phải lùi thì tương lai 'will' thành quá khứ giả định 'would'.",
+                    step4: "Các câu B, C, D vi phạm quy chuẩn ngữ pháp câu tường thuật gián tiếp về mặt lùi thì bắt buộc."
+                }
+            },
+            {
+                id: 76,
+                original: "76. The postman was bitten by our dog.",
+                prompt: "→ Our dog",
+                choices: ["bit the postman.", "bites the postman.", "was bitten the postman.", "has bitten the postman."],
+                correct: "bit the postman.",
+                explanation: {
+                    step1: "A. bit...: Câu chủ động quá khứ đơn chuẩn xác với động từ bất quy tắc.<br>B. chia hiện tại đơn.<br>C. thể bị động ngược (Sai nghĩa).<br>D. thì hiện tại hoàn thành.",
+                    step2: "Người đưa thư đã bị cắn bởi con chó của chúng tôi. -> Con chó của chúng tôi đã cắn người đưa thư.",
+                    step3: "Chuyển câu từ bị động quá khứ đơn 'was bitten' về dạng thức chủ động tương ứng: <strong>S + V2 (Bất quy tắc của bite là bit) + O</strong>.",
+                    step4: "Các phương án B, C, D đều chia sai thể hành động hoặc nhầm lẫn hệ thống dòng thì thời gian câu."
+                }
+            },
+            {
+                id: 77,
+                original: "77. We couldn't drive because of the fog.",
+                prompt: "→ The fog prevented",
+                choices: ["us from driving.", "we from driving.", "us to drive.", "for us to drive."],
+                correct: "us from driving.",
+                explanation: {
+                    step1: "A. us from driving: Cấu trúc giới từ đi với tân ngữ chuẩn xác.<br>B. dùng sai đại từ làm chủ ngữ ngôi 'we'.<br>C, D áp dụng sai cấu trúc động từ nguyên mẫu có 'to'.",
+                    step2: "Chúng tôi không thể lái xe vì sương mù dày đặc. -> Sương mù đã ngăn cản chúng tôi lái xe.",
+                    step3: "Áp dụng cấu trúc ngăn chặn cố định trong tiếng Anh: <strong>Prevent + O (Tân ngữ) + from + V-ing</strong>. Đại từ 'We' phải hoán chuyển thành tân ngữ 'us'.",
+                    step4: "Các phương án B, C, D vi phạm lỗi hình thái đại từ đứng sau động từ hoặc dùng sai cấu trúc giới từ đi kèm động từ 'prevent'."
+                }
+            },
+            {
+                id: 78,
+                original: "78. Although his leg was broken he managed to get out of the car.",
+                prompt: "→ In spite",
+                choices: ["of his broken leg, he managed to get out of the car.", "his leg was broken, he managed to get out of the car.", "of his leg broke, he managed to get out of the car.", "that his leg was broken, he managed to get out of the car."],
+                correct: "of his broken leg, he managed to get out of the car.",
+                explanation: {
+                    step1: "A. of his broken leg...: Cụm danh từ đứng sau giới từ liên hợp chính xác.<br>B. thiếu giới từ 'of' và sai cấu trúc mệnh đề.<br>C. viết sai cấu tạo từ loại cụm.<br>D. dùng sai liên từ mệnh đề.",
+                    step2: "Mặc dù chân bị gãy nhưng anh ấy vẫn cố gắng thoát ra khỏi xe. -> Bất chấp chiếc chân bị gãy, anh ấy vẫn cố gắng thoát ra khỏi xe.",
+                    step3: "Chuyển đổi từ mệnh đề sang cụm từ tương đương: <strong>Although + Mệnh đề = In spite of + Cụm danh từ/V-ing</strong>. Mệnh đề 'his leg was broken' rút gọn thành cụm danh từ sở hữu 'his broken leg'.",
+                    step4: "B, C, D vi phạm quy tắc ngữ pháp bắt buộc sau cụm từ liên hợp chỉ sự nhượng bộ 'In spite of'."
+                }
+            },
+            {
+                id: 79,
+                original: "79. The cake was so hard so I couldn't cat it.",
+                prompt: "→ It was",
+                choices: ["such a hard cake that I couldn't cat it.", "so hard a cake that I couldn't cat it.", "a very hard cake for me to cat it.", "such hard cake that I couldn't cat it."],
+                correct: "such a hard cake that I couldn't cat it.",
+                explanation: {
+                    step1: "A. such a hard cake that...: Cấu trúc nhấn mạnh cụm danh từ đếm được số ít chuẩn xác.<br>B. viết sai đảo ngữ của liên từ 'so'.<br>C. thừa tân ngữ 'it' trong cấu trúc 'too... to'.<br>D. thiếu mạo từ 'a' bắt buộc.",
+                    step2: "Chiếc bánh quá cứng nên tôi không thể ăn nó. -> Đó là một chiếc bánh cứng đến nỗi tôi không thể ăn được nó.",
+                    step3: "Áp dụng quy tắc biến đổi hoán vị: <strong>S + be + so + adj + that + clause = It + be + such + a/an + adj + N (số ít) + that + clause</strong>.",
+                    step4: "Các phương án B, C, D đều vi phạm lỗi cấu tạo vị trí từ loại hoặc thiếu mạo từ đại diện cho danh từ đếm được số ít."
+                }
+            },
+            {
+                id: 80,
+                original: "80. We didn't go because it rained.",
+                prompt: "→ If it hadn't",
+                choices: ["rained, we would have gone.", "rain, we would go.", "rained, we wouldn't have gone.", "been raining, we will go."],
+                correct: "rained, we would have gone.",
+                explanation: {
+                    step1: "A. rained, we would have gone: Giả định điều kiện loại 3 khẳng định kết quả chính xác.<br>B. chia sai điều kiện loại 2.<br>C. giữ thể phủ định làm sai logic nghĩa câu.<br>D. chia sai thì tương lai mệnh đề chính.",
+                    step2: "Chúng tôi đã không đi vì trời mưa. -> Nếu trời đã không mưa, chúng tôi đã đi rồi.",
+                    step3: "Sự việc xảy ra trái ngược hoàn toàn với bối cảnh quá khứ đơn 'didn't go, rained', do đó mượn cấu trúc điều kiện loại 3: <strong>If + S + had + not + V3/ed, S + would + have + V3/ed</strong>.",
+                    step4: "B, D sai loại điều kiện quy định dòng thời gian quá khứ. C làm câu bị phản logic ngữ nghĩa thực tế hành động."
+                }
+            },
+            {
+                id: 81,
+                original: "81. I can't cook as well as my mother does.",
+                prompt: "→ My mother",
+                choices: ["cooks better than I do.", "cooks as well as I do.", "can't cook as well as I do.", "cooks more well than me."],
+                correct: "cooks better than I do.",
+                explanation: {
+                    step1: "A. cooks better than I do: Cấu trúc so sánh hơn của trạng từ bất quy tắc chính xác.<br>B. so sánh bằng khẳng định (Sai nghĩa).<br>C. phủ định so sánh bằng ngược đối tượng.<br>D. more well: sai hình thái biến đổi trạng từ.",
+                    step2: "Tôi không thể nấu ăn giỏi bằng mẹ tôi. -> Mẹ tôi nấu ăn giỏi hơn tôi.",
+                    step3: "Chuyển từ so sánh không bằng sang so sánh hơn của đối tượng thứ hai: <strong>A + can't + V + as + well + as + B = B + V (chia ngôi) + better + than + A</strong>.",
+                    step4: "B và C sai lệch bản chất ngữ nghĩa năng lực hai người. D dùng sai hình thái biến đổi so sánh hơn của từ bất quy tắc 'well'."
+                }
+            },
+            {
+                id: 82,
+                original: "82. I don't suppose you have change for a pound, do you?",
+                prompt: "→ Do you happen",
+                choices: ["to have change for a pound?", "having change for a pound?", "have change for a pound?", "that you have change for a pound?"],
+                correct: "to have change for a pound?",
+                explanation: {
+                    step1: "A. to have...: Cấu trúc động từ nguyên mẫu đi kèm thành ngữ chính xác.<br>B. dùng dạng V-ing (Sai).<br>C. dùng động từ nguyên thể không 'to'.<br>D. dùng sai mệnh đề 'that'.",
+                    step2: "Tôi không nghĩ bạn có tiền lẻ đổi cho một bảng Anh đúng không? -> Bạn có tình cờ có tiền lẻ đổi cho một bảng Anh không?",
+                    step3: "Sử dụng cụm từ thành ngữ giao tiếp lịch sự hỏi thăm tình huống: <strong>Do you happen + to-V?</strong> (Bạn có tình cờ/ngẫu nhiên làm gì đó không?).",
+                    step4: "Các phương án B, C, D đều chia sai hình thái bổ ngữ của động từ nguyên mẫu có 'to' quy định sau từ 'happen'."
+                }
+            },
+            {
+                id: 83,
+                original: "83. He failed to win the race.",
+                prompt: "→ He didn't",
+                choices: ["win the race.", "fail to win the race.", "managed to win the race.", "succeeded in winning the race."],
+                correct: "win the race.",
+                explanation: {
+                    step1: "A. win the race: Động từ nguyên mẫu mang nghĩa trái ngược triệt tiêu từ thất bại.<br>B. tạo lỗi phủ định kép biến đổi nghĩa.<br>C, D từ vựng mang nghĩa tích cực thành công trái nghĩa câu gốc.",
+                    step2: "Anh ấy đã thất bại trong việc giành chiến thắng cuộc đua. -> Anh ấy đã không giành chiến thắng cuộc đua.",
+                    step3: "Cấu trúc phủ định hoán đổi hành động tương đương: <strong>S + failed + to-V = S + didn't + V-bare</strong> (Thất bại làm gì = Đã không làm gì).",
+                    step4: "Các phương án B, C, D đều làm biến đổi hoàn toàn hoặc đảo ngược sắc thái kết quả hành động của cuộc thi đấu thể thao."
+                }
+            },
+            {
+                id: 84,
+                original: "84. Mary rang hours and hour ago.",
+                prompt: "→ It's hours",
+                choices: ["since Mary rang.", "when Mary rang.", "for Mary to ring.", "ago Mary rang."],
+                correct: "since Mary rang.",
+                explanation: {
+                    step1: "A. since Mary rang: Liên từ chỉ mốc thời điểm quá khứ chuẩn xác.<br>B. dùng sai liên từ thời gian 'when'.<br>C. sai cấu trúc câu tốn thời gian.<br>D. kết hợp sai trạng từ 'ago' sau cấu trúc hiện tại.",
+                    step2: "Mary đã gọi điện cách đây hàng giờ đồng hồ rồi. -> Đã hàng giờ đồng hồ trôi qua kể từ khi Mary gọi điện.",
+                    step3: "Áp dụng cấu trúc đo lường khoảng thời gian trôi qua từ một sự kiện quá khứ đơn: <strong>It is + khoảng thời gian + since + S + V2/ed</strong>.",
+                    step4: "Các phương án B, C, D sử dụng sai liên từ liên kết mệnh đề thời gian hoặc đặt từ chỉ thời gian sai vị trí ngữ pháp."
+                }
+            },
+            {
+                id: 85,
+                original: "85. I'm sorry that I didn't finish my homework last night.",
+                prompt: "→ I wish",
+                choices: ["I had finished my homework last night.", "I finished my homework last night.", "I would finish my homework last night.", "I didn't finish my homework last night."],
+                correct: "I had finished my homework last night.",
+                explanation: {
+                    step1: "A. I had finished...: Lùi thì quá khứ hoàn thành cấu trúc ước chuẩn xác.<br>B. ước ở hiện tại (Sai dòng thời gian).<br>C. ước tương lai mong muốn thay đổi hành vi.<br>D. giữ nguyên thể phủ định quá khứ (Sai).",
+                    step2: "Tôi rất tiếc vì đã không hoàn thành bài tập về nhà tối qua. -> Tôi ước tôi đã hoàn thành bài tập về nhà tối qua.",
+                    step3: "Diễn tả một điều ước trái ngược hoàn toàn với sự thật lịch sử đã diễn ra trong quá khứ 'last night', dùng cấu trúc ước loại 3: <strong>S + wish + S + had + V3/ed</strong>.",
+                    step4: "Các câu B, C, D chia sai hình thái lùi thì của mệnh đề giả định bắt buộc đối với thời gian quá khứ xác định."
+                }
+            },
+            {
+                id: 86,
+                original: "86. She asked Michael how she liked her new dress.",
+                prompt: "→ \"How",
+                choices: ["do you like my new dress, Michael?\" she asked.", "did she like her new dress, Michael?\" she asked.", "do you like her new dress, Michael?\" she asked.", "you like my new dress, Michael?\" she asked."],
+                correct: ["do you like my new dress, Michael?\" she asked."],
+                explanation: {
+                    step1: "A. do you like my new dress...: Đổi ngôi và trợ động từ hiện tại tiếp cận trực tiếp chuẩn xác.<br>B, C giữ nguyên đại từ ngôi thứ ba gián tiếp (Sai quy tắc).<br>D. thiếu trợ động từ nghi vấn câu hỏi.",
+                    step2: "Cô ấy đã hỏi Michael xem anh ấy thích chiếc váy mới của cô ấy như thế nào. -> \"Anh thấy chiếc váy mới của em thế nào, Michael?\" cô ấy hỏi.",
+                    step3: "Khi chuyển đổi ngược về câu trực tiếp nghi vấn, ta hoàn trả lại thì hiện tại đơn mượn trợ động từ 'do you', đổi đại từ sở hữu 'her new dress' thành trực tiếp đối thoại 'my new dress'.",
+                    step4: "Các phương án B, C, D vi phạm lỗi cấu trúc đặt trợ động từ nghi vấn hoặc quên không hoán đổi ngôi đại từ xưng hô trực diện."
+                }
+            },
+            {
+                id: 87,
+                original: "87. A train leaves at 8 o'clock every morning.",
+                prompt: "→ There is",
+                choices: ["a train leaving at 8 o'clock every morning.", "a train leaves at 8 o'clock every morning.", "a train that leaving at 8 o'clock every morning.", "leaving a train at 8 o'clock every morning."],
+                correct: "a train leaving at 8 o'clock every morning.",
+                explanation: {
+                    step1: "A. a train leaving...: Phân từ chủ động rút gọn mệnh đề quan hệ chính xác.<br>B. để hai động từ chia chính đứng sát nhau lỗi ngữ pháp.<br>C. thiếu động từ tobe sau đại từ quan hệ.<br>D. đảo lộn sai trật tự từ.",
+                    step2: "Có một chuyến tàu khởi hành lúc 8 giờ mỗi sáng. -> Có một chuyến tàu khởi hành lúc 8 giờ mỗi sáng.",
+                    step3: "Cấu trúc tồn tại kết hợp mệnh đề quan hệ rút gọn dạng chủ động: <strong>There is + Noun + V-ing + thành phần phụ</strong> (Rút gọn từ cụm 'a train which leaves').",
+                    step4: "Các phương án B, C, D vi phạm lỗi ngữ pháp nghiêm trọng do trùng lặp động từ chính hoặc viết sai quy tắc mệnh đề quan hệ."
+                }
+            },
+            {
+                id: 88,
+                original: "88. Nobody can deny that she has a beautiful voice.",
+                prompt: "→ It",
+                choices: ["cannot be denied that she has a beautiful voice.", "can deny that she has a beautiful voice.", "is denied that she has a beautiful voice.", "cannot deny that she has a beautiful voice."],
+                correct: "cannot be denied that she has a beautiful voice.",
+                explanation: {
+                    step1: "A. cannot be denied...: Câu bị động với chủ ngữ giả chuẩn xác.<br>B. khẳng định sai nghĩa.<br>C. bị động khẳng định làm sai lệch bối cảnh tuyệt đối.<br>D. câu chủ động thiếu tân ngữ tác động.",
+                    step2: "Không ai có thể phủ nhận rằng cô ấy có một giọng hát đẹp. -> Không thể phủ nhận được rằng cô ấy có một giọng hát đẹp.",
+                    step3: "Chuyển câu sang thể bị động khách quan dùng chủ ngữ giả 'It': <strong>Nobody can deny + that-clause = It cannot be denied + that-clause</strong>.",
+                    step4: "Các phương án B, C, D vi phạm quy tắc chia động từ thể bị động khuyết thiếu hoặc làm đảo ngược sắc thái khẳng định/phủ định của đề."
+                }
+            },
+            {
+                id: 89,
+                original: "89. I would like you help me to put the chairs away.",
+                prompt: "→ Do you mind",
+                choices: ["helping me to put the chairs away?", "to help me to put the chairs away?", "if you help me to put the chairs away?", "help me to put the chairs away?"],
+                correct: "helping me to put the chairs away?",
+                explanation: {
+                    step1: "A. helping me...: Danh động từ đuôi -ing đứng sau động từ yêu cầu chính xác.<br>B, D chia sai hình thái động từ nguyên mẫu.<br>C. sai cấu trúc điều kiện lịch sự (đúng phải là if you helped/if I put).",
+                    step2: "Tôi muốn bạn giúp tôi cất những chiếc ghế này đi. -> Bạn có phiền giúp tôi cất những chiếc ghế này đi không?",
+                    step3: "Cấu trúc đưa ra lời yêu cầu, đề nghị lịch sự người khác làm gì cho mình: <strong>Do you mind + V-ing + ...?</strong>.",
+                    step4: "Các phương án B, C, D vi phạm quy chuẩn cấu trúc từ loại bắt buộc đứng sau hệ động từ tâm lý cảm xúc 'mind'."
+                }
+            },
+            {
+                id: 90,
+                original: "90. The child will die if nobody sends for a doctor.",
+                prompt: "→ Unless",
+                choices: ["somebody sends for a doctor, the child will die.", "nobody sends for a doctor, the child will die.", "someone will send for a doctor, the child will die.", "a doctor is sent for, the child won't die."],
+                correct: "somebody sends for a doctor, the child will die.",
+                explanation: {
+                    step1: "A. somebody sends...: Mệnh đề khẳng định đổi đại từ bất định chính xác.<br>B. giữ từ phủ định tạo lỗi phủ định kép.<br>C. dùng trợ động từ tương lai sai quy tắc điều kiện.<br>D. làm biến đổi sai logic hệ quả sinh mạng.",
+                    step2: "Đứa trẻ sẽ chết nếu không có ai đi mời bác sĩ. -> Trừ khi có ai đó đi mời bác sĩ, nếu không đứa trẻ sẽ chết.",
+                    step3: "Mối liên hệ điều kiện phủ định: <strong>If... nobody = Unless... somebody</strong>. Bản thân từ 'Unless' đã mang nghĩa phủ định (Trừ khi không), nên đại từ phủ định 'nobody' phải đổi thành khẳng định 'somebody'.",
+                    step4: "B sai logic trùng phủ định. C sai thì điều kiện hiện tại đơn. D viết câu làm sai lệch hoàn toàn thực tế hệ quả tai nạn câu gốc."
+                }
+            },
+            {
+                id: 91,
+                original: "91. He would prefer you to pay him immediately.",
+                prompt: "→ He'd rather",
+                choices: ["you paid him immediately.", "you pay him immediately.", "to pay him immediately.", "you would pay him immediately."],
+                correct: "you paid him immediately.",
+                explanation: {
+                    step1: "A. you paid...: Mệnh đề giả định lùi thì quá khứ đơn chính xác.<br>B. giữ nguyên mẫu hiện tại (Sai).<br>C. cấu trúc một chủ ngữ (Sai bối cảnh nhờ vả).<br>D. kết hợp sai trợ động từ khuyết thiếu.",
+                    step2: "Anh ấy muốn bạn thanh toán tiền cho anh ấy ngay lập tức. -> Anh ấy muốn bạn trả tiền cho anh ấy ngay lập tức thì hơn.",
+                    step3: "Cấu trúc giả định hai chủ ngữ diễn tả mong muốn ở hiện tại/tương lai: <strong>S1 + would rather + S2 + V-quá khứ đơn</strong>. Do đó động từ 'pay' phải lùi thành 'paid'.",
+                    step4: "Các phương án B, C, D đều chia sai dạng thức hoặc sai lệch quy tắc cấu trúc lùi thì bắt buộc sau từ cầu khiến 'would rather'."
+                }
+            },
+            {
+                id: 92,
+                original: "92. The water was so cold that the children couldn't swim in it.",
+                prompt: "→ The water was not",
+                choices: ["warm enough for the children to swim in.", "warm enough for the children to swim in it.", "cold enough for the children to swim in.", "warm enough that the children could swim in it."],
+                correct: "warm enough for the children to swim in.",
+                explanation: {
+                    step1: "A. warm enough for... to swim in: Tính từ trái nghĩa kết hợp cấu trúc 'enough' bỏ tân ngữ lặp lại chính xác.<br>B. thừa tân ngữ 'it' cuối câu.<br>C. giữ nguyên tính từ gốc gây ngược nghĩa.<br>D. áp dụng sai cấu trúc mệnh đề.",
+                    step2: "Nước quá lạnh đến nỗi trẻ em không thể bơi trong đó. -> Nước không đủ ấm để trẻ em có thể bơi vào.",
+                    step3: "Biến đổi cấu trúc từ kết quả sang điều kiện đủ: <strong>S + be + so + cold + that... = S + be + not + warm (trái nghĩa) + enough + for O + to-V</strong>. Giữ giới từ 'in' và bỏ tân ngữ lặp lại 'it'.",
+                    step4: "B lỗi thừa đại từ cuối câu. C và D dùng sai tính từ hoặc áp dụng sai công thức cấu tạo của từ chỉ mức độ 'enough'."
+                }
+            },
+            {
+                id: 93,
+                original: "93. Somebody repaired her car yesterday.",
+                prompt: "→ She",
+                choices: ["had her car repaired yesterday.", "repaired her car yesterday.", "had somebody to repair her car yesterday.", "got her car repair yesterday."],
+                correct: "had her car repaired yesterday.",
+                explanation: {
+                    step1: "A. had her car repaired...: Cấu trúc nhờ vả bị động chuẩn xác.<br>B. tự mình sửa xe (Sai nghĩa bối cảnh).<br>C. sai dạng thức động từ chủ động (đúng phải là had somebody repair).<br>D. thiếu phân từ hai sau từ 'got'.",
+                    step2: "Ai đó đã sửa xe ô tô cho cô ấy ngày hôm qua. -> Cô ấy đã mang xe ô tô đi sửa ngày hôm qua.",
+                    step3: "Sử dụng cấu trúc câu nhờ vả, thuê mướn dịch vụ ở thể bị động quá khứ đơn: <strong>S + had + something + V3/ed</strong>.",
+                    step4: "B làm sai nghĩa bản chất đối tượng trực tiếp thực hiện hành vi. C và D áp dụng sai công thức cấu tạo của thể sai khiến."
+                }
+            },
+            {
+                id: 94,
+                original: "94. You must see the manager tomorrow morning.",
+                prompt: "→ You've",
+                choices: ["got to see the manager tomorrow morning.", "to see the manager tomorrow morning.", "have to see the manager tomorrow morning.", "must see the manager tomorrow morning."],
+                correct: "got to see the manager tomorrow morning.",
+                explanation: {
+                    step1: "A. got to see...: Cấu trúc bán khiếm khuyết tương đương chính xác.<br>B. thiếu từ cấu thành 'got' sau chữ 'have' viết tắt.<br>C. viết trùng lặp hai lần động từ sở hữu.<br>D. dùng sai cấu trúc động từ khuyết thiếu.",
+                    step2: "Bạn phải gặp người quản lý vào sáng mai. -> Bạn phải gặp người quản lý vào sáng mai.",
+                    step3: "Cụm từ đồng nghĩa biểu đạt sự bắt buộc, bổn phận phải thực hiện: <strong>Must + V-bare = Have got to + V-bare ('ve got to)</strong>.",
+                    step4: "Các phương án B, C, D đều vi phạm quy tắc kết hợp cấu trúc viết tắt cụm từ hoặc dùng sai cấu tạo động từ tình thái."
+                }
+            },
+            {
+                id: 95,
+                original: "95. There was never any answers when we rang.",
+                prompt: "→ Every",
+                choices: ["time we rang, there was no answer.", "time we ring, there is no answer.", "time when we rang, there were never answers.", "answer was never there when we rang."],
+                correct: "time we rang, there was no answer.",
+                explanation: {
+                    step1: "A. time we rang...: Mệnh đề trạng ngữ thời gian quá khứ phối hợp cấu trúc chính xác.<br>B. chia sai sang thì hiện tại đơn.<br>C. lặp từ chỉ định mối quan hệ quan hệ thừa thãi.<br>D. viết câu lộn xộn sai bản chất cú pháp.",
+                    step2: "Không bao giờ có câu trả lời khi chúng tôi gọi điện. -> Mỗi lần chúng tôi gọi điện, đều không có câu trả lời.",
+                    step3: "Sử dụng cụm trạng từ chỉ tần suất thời gian lặp lại sự kiện trong quá khứ: <strong>Every time + Mệnh đề quá khứ đơn, mệnh đề kết quả quá khứ</strong>.",
+                    step4: "B sai lệch hoàn toàn dòng thời gian lịch sử của sự việc câu gốc. C và D viết sai cấu trúc mạch lạc ngữ pháp."
+                }
+            },
+            {
+                id: 96,
+                original: "96. That's an insulting name to use for him.",
+                prompt: "→ Don't call",
+                choices: ["him by that insulting name.", "his name insulting like that.", "him an insulting name to use.", "that insulting name for him."],
+                correct: "him by that insulting name.",
+                explanation: {
+                    step1: "A. him by that insulting name: Cấu trúc gọi ai bằng danh xưng gì chính xác giới từ.<br>B, C, D viết sai cấu trúc tân ngữ hành động đứng sau động từ mệnh lệnh 'call'.",
+                    step2: "Đó là một cái tên xúc phạm khi dùng cho anh ấy. -> Đừng gọi anh ấy bằng cái tên xúc phạm đó.",
+                    step3: "Áp dụng cấu trúc câu mệnh lệnh phủ định kết hợp cụm hành vi danh xưng: <strong>Don't call + somebody + by + cụm danh từ tên gọi</strong>.",
+                    step4: "Các phương án B, C, D sắp xếp sai trật tự từ loại ngữ pháp, khiến câu bị tối nghĩa hoặc vi phạm quy tắc kết hợp giới từ."
+                }
+            },
+            {
+                id: 97,
+                original: "97. John asked if it was the blue one or the green she wanted.",
+                prompt: "→ Which",
+                choices: ["one do you want, the blue or the green?\" John asked her.", "one did you want, the blue or the green?\" John asked.", "one she wanted, the blue or the green?\" John asked.", "is the blue one or the green one you want?\" John asked."],
+                correct: ["one do you want, the blue or the green?\" John asked her."],
+                explanation: {
+                    step1: "A. one do you want...: Hoàn trả câu trực tiếp lựa chọn hiện tại đơn đổi ngôi chuẩn văn phong.<br>B. chia thì quá khứ đơn câu hỏi trực tiếp (Sai).<br>C. thiếu trợ động từ nghi vấn.<br>D. viết sai cấu trúc lựa chọn.",
+                    step2: "John đã hỏi liệu có phải cái màu xanh dương hay cái màu xanh lá cây là cái cô ấy muốn. -> \"Em muốn cái nào, cái màu xanh dương hay xanh lá cây?\" John hỏi cô ấy.",
+                    step3: "Chuyển từ câu gián tiếp điều kiện lựa chọn sang câu hỏi trực tiếp lựa chọn: <strong>\"Which one + do + you + V-bare...?\" + S + asked</strong>. Đổi ngôi 'she wanted' về trực tiếp đối thoại 'do you want'.",
+                    step4: "Các câu B, C, D chia sai thì động từ hệ thống trực tiếp hoặc thiếu trợ động từ cấu thành thành phần câu nghi vấn."
+                }
+            },
+            {
+                id: 98,
+                original: "98. She liked Paris very little, and Rome less.",
+                prompt: "→ She thought Rome",
+                choices: ["was even worse than Paris.", "was better than Paris.", "was as beautiful as Paris.", "was less than Paris."],
+                correct: "was even worse than Paris.",
+                explanation: {
+                    step1: "A. was even worse than...: Diễn tả tính chất tiêu cực tăng tiến so sánh hơn chính xác.<br>B, C mang tính chất tích cực trái ngược hoàn toàn đề bài.<br>D. thiếu tính từ/trạng từ trung tâm cấu trúc so sánh.",
+                    step2: "Cô ấy thích Paris rất ít, và thích Rome ít hơn. -> Cô ấy nghĩ Rome thậm chí còn tệ hơn Paris.",
+                    step3: "Dựa vào dữ liệu so sánh mức độ yêu thích tiêu cực giảm dần ('very little', 'less') -> Rome mang tính chất ít được thích hơn cả Paris, tương đương cấu trúc so sánh hơn tính chất tiêu cực tăng tiến 'even worse than'.",
+                    step4: "Các câu B, C, D đều làm đảo lộn hoặc viết sai cấu trúc ngữ pháp biểu đạt mức độ đo lường cảm xúc của chủ ngữ."
+                }
+            },
+            {
+                id: 99,
+                original: "99. I can meet you if you arrive before eleven. ",
+                prompt: "→ So",
+                choices: ["long as you arrive before eleven, I can meet you.", "that you arrive before eleven, I can meet you.", "far as I know you arrive before eleven, I can meet you.", "long that you arrive before eleven, I can meet you."],
+                correct: "long as you arrive before eleven, I can meet you.",
+                explanation: {
+                    step1: "A. long as...: Cặp liên từ điều kiện tương đương thay thế mệnh đề chính xác.<br>B. cụm từ chỉ mục đích (Sai nghĩa).<br>C. cụm từ chỉ giới hạn nhận thức tri thức.<br>D. viết sai liên từ kết hợp.",
+                    step2: "Tôi có thể gặp bạn nếu bạn đến trước 11 giờ. -> Miễn là bạn đến trước 11 giờ, tôi có thể gặp bạn.",
+                    step3: "Sử dụng cụm liên từ điều kiện mang tính tương đương tuyệt đối thay thế cho từ 'If': <strong>So long as / As long as + Mệnh đề điều kiện</strong> (Miễn là, chỉ cần).",
+                    step4: "Các phương án B, C, D dùng sai cấu trúc liên từ, làm câu bị biến đổi sang nét nghĩa chỉ mục đích hoặc phạm vi hiểu biết."
+                }
+            },
+            {
+                id: 100,
+                original: "100. They will catch all the prisoners again by tonight.",
+                prompt: "→ All the prisoners",
+                choices: ["will be caught again by tonight.", "will catch again by tonight.", "will have caught again by tonight.", "are caught again by tonight."],
+                correct: "will be caught again by tonight.",
+                explanation: {
+                    step1: "A. will be caught...: Thể bị động tương lai đơn chính xác với động từ phân từ hai bất quy tắc.<br>B. thể chủ động (Sai nghĩa).<br>C. bị động hoàn thành thiếu từ cấu thành 'been'.<br>D. chia sai thì hiện tại đơn.",
+                    step2: "Họ sẽ bắt lại tất cả các tù nhân trước tối nay. -> Tất cả các tù nhân sẽ bị bắt lại trước tối nay.",
+                    step3: "Chuyển câu từ thể chủ động sang bị động của dòng thì Tương Lai Đơn do có cụm thời điểm 'by tonight': <strong>S (vật số nhiều) + will + be + V3/ed (Quá khứ phân từ của catch là caught)</strong>.",
+                    step4: "Các phương án B, C, D đều chia sai bản chất thể tác động hành vi vật hoặc viết thiếu từ loại cấu trúc của hệ động từ bị động."
+                }
+            }
+        ];
+
+        /* --- THUẬT TOÁN SHUFFLE ĐÁP ÁN NGẪU NHIÊN MỖI LẦN LOAD TRANG --- */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        const quizData = quizDataRaw.map((q) => {
+            const choicesCopy = [...q.choices];
+            shuffleArray(choicesCopy);
+            return { ...q, choices: choicesCopy };
+        });
+
+        let userProgress = {};
+
+        /* --- RENDER TOÀN BỘ GIAO DIỆN ĐỀ THI LÊN WEB --- */
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = "";
+
+            quizData.forEach((q, qIdx) => {
+                const card = document.createElement('div');
+                card.className = "question-card";
+                card.id = `card-q-${qIdx}`;
+
+                const headerDiv = document.createElement('div');
+                headerDiv.className = "q-header";
+                headerDiv.innerHTML = `<strong>Câu ${q.id}:</strong> ${q.original.substring(q.original.indexOf('.') + 1)} <span class="q-subtext">${q.prompt} ...</span>`;
+                card.appendChild(headerDiv);
+
+                const choicesGrid = document.createElement('div');
+                choicesGrid.className = "choices-grid";
+
+                q.choices.forEach((choiceText) => {
+                    const btn = document.createElement('button');
+                    btn.className = "choice-btn";
+                    btn.innerHTML = choiceText;
+                    btn.onclick = () => checkChoiceAnswer(qIdx, choiceText, btn, q.correct, card);
+                    choicesGrid.appendChild(btn);
+                });
+                card.appendChild(choicesGrid);
+
+                const expDiv = document.createElement('div');
+                expDiv.className = "explanation-container";
+                expDiv.id = `explanation-${qIdx}`;
+                expDiv.innerHTML = `
+                    <div class="exp-heading">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG</div>
+                    <div class="exp-step">
+                        <span class="exp-step-title">Bước 1: Phân tích cấu trúc ngữ pháp/từ vựng 4 đáp án:</span>
+                        <div>${q.explanation.step1}</div>
+                    </div>
+                    <div class="exp-step">
+                        <span class="exp-step-title">Bước 2: Dịch nghĩa toàn câu văn bối cảnh:</span>
+                        <div style="font-style: italic; color: #555;">"${q.explanation.step2}"</div>
+                    </div>
+                    <div class="exp-step">
+                        <span class="exp-step-title">Bước 3: Tại sao đáp án đúng là ĐÚNG?</span>
+                        <div style="color: var(--correct-shadow); font-weight:700;">${q.explanation.step3}</div>
+                    </div>
+                    <div class="exp-step">
+                        <span class="exp-step-title">Bước 4: Tại sao 3 đáp án còn lại SAI?</span>
+                        <div>${q.explanation.step4}</div>
+                    </div>
+                `;
+                card.appendChild(expDiv);
+                container.appendChild(card);
+            });
+        }
+
+        /* --- CHẤM ĐIỂM TỨC THÌ VÀ HIỂN THỊ HIỆU ỨNG TƯƠNG TÁC ĐỘNG --- */
+        function checkChoiceAnswer(qIdx, selectedText, clickedBtn, correctText, cardDOM) {
+            const isCorrect = (selectedText === correctText || (Array.isArray(correctText) && correctText.includes(selectedText)));
+            const parentGrid = clickedBtn.parentElement;
+            const allButtons = parentGrid.querySelectorAll('.choice-btn');
+
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (isCorrect) {
+                clickedBtn.classList.add('correct-ans');
+                playAudioFeedback('correct');
+                triggerConfettiEffect();
+                userProgress[`q-${qIdx}`] = true;
+            } else {
+                clickedBtn.classList.add('wrong-ans');
+                allButtons.forEach(btn => {
+                    if (btn.innerText === correctText || (Array.isArray(correctText) && correctText.includes(btn.innerText))) {
+                        btn.classList.add('correct-ans');
+                    }
+                });
+                playAudioFeedback('wrong');
+                cardDOM.classList.add('shake-animation');
+                userProgress[`q-${qIdx}`] = false;
+            }
+
+            document.getElementById(`explanation-${qIdx}`).style.display = "block";
+        }
+
+        /* --- HÀM NỘP BÀI TỔNG KẾT VÀ HIỂN THỊ PHẢN HỒI TÂM LÝ --- */
+        function submitExam() {
+            let totalQuestions = quizData.length;
+            let correctCount = 0;
+
+            for (let i = 0; i < totalQuestions; i++) {
+                if (userProgress[`q-${i}`] === true) {
+                    correctCount++;
+                }
+            }
+
+            const scorePercentage = (correctCount / totalQuestions) * 100;
+            let commentText = "";
+
+            if (scorePercentage < 50) {
+                commentText = "Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (scorePercentage >= 60 && scorePercentage <= 80) {
+                commentText = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (scorePercentage >= 90) {
+                commentText = "Làm tốt lắm, con cố gắng ring điểm 10 ở lần sau nha!";
+            } else {
+                commentText = "Con đã hoàn thành bài thi khá tốt! Hãy đọc kỹ lại các câu sai thông qua khung giải thích chi tiết của cô để rèn luyện tư duy sâu sắc nhé!";
+            }
+
+            document.getElementById('score-text').innerText = `${correctCount} / ${totalQuestions}`;
+            document.getElementById('comment-text').innerText = commentText;
+            document.getElementById('result-modal').style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = "none";
+            userProgress = {}; 
+            shuffleArray(quizData); 
+            renderQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        }
+
+        window.onload = () => {
+            initBackgroundPatterns();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
